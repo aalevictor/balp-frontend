@@ -7,20 +7,19 @@ import { Text } from './components/Text'
 import { TextInput } from './components/TextInput'
 import './styles/global.css'
 import bg from './assets/bg.png'
+import { PlayerHeader } from './components/PlayerHeader'
 
 export function App() {
   return (
-    <div className='w-full h-full absolute' style={{ backgroundImage:`url(${bg})` }}>
+    // <div className='w-full h-full absolute py-8 flex' style={{ backgroundImage:`url(${bg})` }}>
+    <div className='w-full h-full absolute flex'>
       <Form.Root>
         <Form.Content>
-          <div className="w-full gap-3 flex flex-col">
+          <div className="w-full gap-1 flex flex-col p-0">
             <Text
-              color="offwhite"
-              family="semibold"
-              size="md"
-            >
-              Login
-            </Text>
+              color="text-offwhite"
+              size="text-sm"
+              children="Login" />
             <TextInput.Root>
               <TextInput.Icon>
                 <TwitchLogo />
@@ -28,14 +27,11 @@ export function App() {
               <TextInput.Input placeholder="User da Twitch" />
             </TextInput.Root>
           </div>
-          <div className="w-full gap-3 flex flex-col">
+          <div className="w-full gap-1 flex flex-col">
             <Text
-              color="offwhite"
-              family="semibold"
-              size="md"
-            >
-              Senha
-            </Text>
+              color="text-offwhite"
+              size="text-sm"
+              children="Senha" />
             <TextInput.Root>
               <TextInput.Icon>
                 <Key />
@@ -48,7 +44,7 @@ export function App() {
           </div>
           <div className="flex items-center gap-2">
             <Checkbox />
-            <Text size='sm'>
+            <Text size='text-sm'>
               Permanecer logado
             </Text>
           </div>
@@ -60,8 +56,8 @@ export function App() {
             href="#"
           >
             <Text
-              color="offwhite"
-              size="sm"
+              color="text-offwhite"
+              size="text-xs"
               underline
             >
               Esqueceu sua senha?
@@ -73,8 +69,8 @@ export function App() {
           href="#"
         >
           <Text
-            color="offwhite"
-            size="sm"
+            color="text-offwhite"
+            size="text-xs"
             underline
           >
             Não tem uma conta? Cadastre-se!

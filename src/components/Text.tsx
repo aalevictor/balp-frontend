@@ -5,21 +5,21 @@ import { ReactNode } from 'react';
 export interface TextProps {
     color?: string;
     children?: ReactNode;
-    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-    family?: 'normal' | 'semibold' | 'bold' | 'extrabold' | 'black';
+    size?: 'text-xs' | 'text-sm' | 'text-md' | 'text-lg' | 'text-xl';
+    family?: 'font-normal' | 'font-semibold' | 'font-bold' | 'font-extrabold' | 'font-black';
     underline?: boolean;
     asChild?: boolean;
 }
 
-export function Text({ size = 'md', color='offwhite', children='Text', family='normal', asChild=false, underline=false }: TextProps) {
+export function Text({ size = 'text-md', color='text-offwhite', children='Text', family='font-normal', asChild=false, underline=false }: TextProps) {
     const Comp = asChild ? Slot : 'span'
     return (
         <Comp className={clsx(
             'font-sans',
-            'text-' + size,
+            size,
             underline ? 'underline' : '',
-            'text-' + color,
-            'font-' + family,
+            color,
+            family,
         )}>{ children }</Comp>
     )
 }

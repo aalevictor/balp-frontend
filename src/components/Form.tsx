@@ -1,4 +1,4 @@
-import logo from '../assets/logo1.png'
+import logo from '../assets/logo2.png'
 import { ReactNode } from "react";
 
 export interface FormRootProps {
@@ -7,8 +7,7 @@ export interface FormRootProps {
 
 export function FormRoot({ children }: FormRootProps) {
     return (
-        <div className='bg-grey-1 rounded-lg flex flex-col justify-center items-center p-8 gap-8 w-[50%] max-w-[650px] min-w-fit mx-auto'>
-            <img src={logo} className='w-[80%]' />
+        <div className='bg-grey-1 rounded-lg flex flex-col justify-center items-center p-8 gap-6 mx-auto my-auto h-fit w-fit'>
             { children }
         </div>
     )
@@ -22,7 +21,8 @@ export interface FormContentProps {
 
 export function FormContent({ children }: FormContentProps) {
     return (
-        <div className='bg-blue-2 rounded-lg flex flex-col w-full justify-center items-center p-8 gap-8 border-solid border-8 border-blue-3'>
+        <div className='bg-blue-2 rounded-lg flex flex-col justify-center items-center w-fit p-8 gap-4 border-solid border-8 border-blue-3'>
+            <img src={logo} className="h-8 mb-4"/>
             { children }
         </div>
     )

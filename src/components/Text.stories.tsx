@@ -5,20 +5,20 @@ export default {
     title: 'Components/Text',
     component: Text,
     args: {
-        color: 'offwhite',
+        color: 'text-offwhite',
         children: 'Loren ipsum.',
-        size: 'md',
-        family: 'normal'
+        size: 'text-md',
+        family: 'font-normal'
     },
     argTypes: {
         size: {
-            options: [ 'xs', 'sm', 'md', 'lg', 'xl' ],
+            options: [ 'text-xs', 'text-sm', 'text-md', 'text-lg', 'text-xl' ],
             control: {
                 type: 'inline-radio',
             }
         },
         family: {
-            options: [ 'normal', 'semibold', 'bold', 'extrabold', 'black' ],
+            options: [ 'font-normal', 'font-semibold', 'font-bold', 'font-extrabold', 'font-black' ],
             control: {
                 type: 'inline-radio',
             }
@@ -30,25 +30,25 @@ export const Default: StoryObj<TextProps> = {}
 
 export const ExtraSmall: StoryObj<TextProps> = {
     args: {
-        size: 'xs'
+        size: 'text-xs'
     }
 }
 
 export const Small: StoryObj<TextProps> = {
     args: {
-        size: 'sm'
+        size: 'text-sm'
     }
 }
 
 export const Large: StoryObj<TextProps> = {
     args: {
-        size: 'lg'
+        size: 'text-lg'
     }
 }
 
 export const ExtraLarge: StoryObj<TextProps> = {
     args: {
-        size: 'xl'
+        size: 'text-xl'
     }
 }
 

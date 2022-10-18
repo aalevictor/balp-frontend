@@ -26,7 +26,7 @@ export const Login: StoryObj<FormRootProps> = {
         children: [
             <Form.Content>
                 <div className='w-full gap-3 flex flex-col'>
-                    <Text color='offwhite' size='md' family='semibold'>Login</Text>
+                    <Text color='text-offwhite' size='text-md' family='font-semibold'>Login</Text>
                     <TextInput.Root>
                         <TextInput.Icon>
                             <TwitchLogo />
@@ -35,7 +35,7 @@ export const Login: StoryObj<FormRootProps> = {
                     </TextInput.Root>
                 </div>
                 <div className='w-full gap-3 flex flex-col'>
-                    <Text color='offwhite' size='md' family='semibold'>Senha</Text>
+                    <Text color='text-offwhite' size='text-md' family='font-semibold'>Senha</Text>
                     <TextInput.Root>
                         <TextInput.Icon>
                             <Key />
@@ -51,13 +51,13 @@ export const Login: StoryObj<FormRootProps> = {
                     Entrar
                 </Button>
                 <a href='#' className='outline-none focus:ring-2 ring-offwhite'>
-                    <Text size='sm' color='offwhite' underline>
+                    <Text size='text-sm' color='text-offwhite' underline>
                         Esqueceu sua senha?
                     </Text>
                 </a>
             </Form.Content>,
             <a href='#' className='outline-none focus:ring-2 ring-offwhite'>
-                <Text size='sm' color='offwhite' underline>
+                <Text size='text-sm' color='text-offwhite' underline>
                     Não tem uma conta? Cadastre-se!
                 </Text>
             </a>
