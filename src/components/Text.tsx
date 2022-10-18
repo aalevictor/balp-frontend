@@ -6,20 +6,17 @@ export interface TextProps {
     color?: string;
     children?: ReactNode;
     size?: 'text-xs' | 'text-sm' | 'text-md' | 'text-lg' | 'text-xl';
-    family?: 'font-normal' | 'font-semibold' | 'font-bold' | 'font-extrabold' | 'font-black';
-    underline?: boolean;
     asChild?: boolean;
+    className?: string;
 }
 
-export function Text({ size = 'text-md', color='text-offwhite', children='Text', family='font-normal', asChild=false, underline=false }: TextProps) {
+export function Text({ size = 'text-md', children='Text', asChild=false, className }: TextProps) {
     const Comp = asChild ? Slot : 'span'
     return (
         <Comp className={clsx(
             'font-sans',
             size,
-            underline ? 'underline' : '',
-            color,
-            family,
+            className
         )}>{ children }</Comp>
     )
 }

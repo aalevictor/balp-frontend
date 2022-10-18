@@ -7,9 +7,11 @@ export interface FormRootProps {
 
 export function FormRoot({ children }: FormRootProps) {
     return (
-        <div className='bg-grey-1 rounded-lg flex flex-col justify-center items-center p-8 gap-6 mx-auto my-auto h-fit w-fit'>
-            { children }
-        </div>
+        <form>
+            <div className='bg-grey-1 rounded-lg flex flex-col justify-center items-center p-8 gap-6 mx-auto my-auto h-fit w-fit'>
+                { children }
+            </div>
+        </form>
     )
 }
 

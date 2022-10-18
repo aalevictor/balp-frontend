@@ -25,8 +25,8 @@ export const Login: StoryObj<FormRootProps> = {
     args: {
         children: [
             <Form.Content>
-                <div className='w-full gap-3 flex flex-col'>
-                    <Text color='text-offwhite' size='text-md' family='font-semibold'>Login</Text>
+                <div className='w-full gap-1 flex flex-col'>
+                    <Text color='text-offwhite' size='text-sm'>Login</Text>
                     <TextInput.Root>
                         <TextInput.Icon>
                             <TwitchLogo />
@@ -34,8 +34,8 @@ export const Login: StoryObj<FormRootProps> = {
                         <TextInput.Input placeholder='User da Twitch' />
                     </TextInput.Root>
                 </div>
-                <div className='w-full gap-3 flex flex-col'>
-                    <Text color='text-offwhite' size='text-md' family='font-semibold'>Senha</Text>
+                <div className='w-full gap-1 flex flex-col'>
+                    <Text color='text-offwhite' size='text-sm'>Senha</Text>
                     <TextInput.Root>
                         <TextInput.Icon>
                             <Key />
@@ -45,19 +45,19 @@ export const Login: StoryObj<FormRootProps> = {
                 </div>
                 <div className='flex items-center gap-2'>
                     <Checkbox />
-                    <Text size='text-sm'>Permanecer logado</Text>
+                    <Text size='text-xs'>Permanecer logado</Text>
                 </div>
                 <Button>
                     Entrar
                 </Button>
                 <a href='#' className='outline-none focus:ring-2 ring-offwhite'>
-                    <Text size='text-sm' color='text-offwhite' underline>
+                    <Text size='text-xs' color='text-offwhite' className='underline'>
                         Esqueceu sua senha?
                     </Text>
                 </a>
             </Form.Content>,
             <a href='#' className='outline-none focus:ring-2 ring-offwhite'>
-                <Text size='text-sm' color='text-offwhite' underline>
+                <Text size='text-xs' color='text-offwhite' className='underline'>
                     Não tem uma conta? Cadastre-se!
                 </Text>
             </a>

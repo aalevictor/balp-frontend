@@ -5,10 +5,8 @@ export default {
     title: 'Components/Text',
     component: Text,
     args: {
-        color: 'text-offwhite',
         children: 'Loren ipsum.',
         size: 'text-md',
-        family: 'font-normal'
     },
     argTypes: {
         size: {
@@ -16,13 +14,7 @@ export default {
             control: {
                 type: 'inline-radio',
             }
-        },
-        family: {
-            options: [ 'font-normal', 'font-semibold', 'font-bold', 'font-extrabold', 'font-black' ],
-            control: {
-                type: 'inline-radio',
-            }
-        }    
+        },  
     }
 } as Meta<TextProps>
 

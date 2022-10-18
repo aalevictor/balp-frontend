@@ -20,7 +20,7 @@ module.exports = {
         '1': '#80A7C5',
         '2': '#263F78',
         '3': '#1B2C54',
-        '400': '#1A3167',
+        '4': '#1A3167',
       },
 
       grey: {
@@ -34,7 +34,7 @@ module.exports = {
   },
   plugins: [],
   safelist: [{
-          pattern: /(bg|text|border)-blue-(1|2|3|400)/,
+          pattern: /(bg|text|border)-blue-(1|2|3|4)/,
           pattern: /(bg|text|border)-grey-(1|2)/,
           pattern: /(bg|text|border)-(offwhite|black|transparent)/,    
           pattern: /text-(xs|sm|md|lg|xl)/,
