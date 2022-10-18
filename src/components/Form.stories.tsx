@@ -45,7 +45,7 @@ export const Login: StoryObj<FormRootProps> = {
                 </div>
                 <div className='flex items-center gap-2'>
                     <Checkbox />
-                    <Text >Permanecer logado</Text>
+                    <Text size='text-sm'>Permanecer logado</Text>
                 </div>
                 <Button>
                     Entrar
