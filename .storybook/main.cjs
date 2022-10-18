@@ -15,11 +15,11 @@ module.exports = {
   "features": {
     "storyStoreV7": true
   },
-  viteFinal: (config, { configType }) => {
-    if (configType === 'PRODUCTION') {
-      config.base = '/balp-frontend/'
-    }
+  // viteFinal: (config, { configType }) => {
+  //   if (configType === 'PRODUCTION') {
+  //     config.base = '/balp-frontend/'
+  //   }
 
-    return config
-  }
+  //   return config
+  // }
 }
