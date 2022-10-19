@@ -11,6 +11,9 @@ module.exports = {
       lg: '24px',
       xl: '32px',
     },
+    fontFamily: {
+      sans: 'Inter, sans-serif'
+    },
     colors: {
       offwhite: '#FFF4D3',
       black:    '#000000',
@@ -26,13 +29,20 @@ module.exports = {
       grey: {
         '1': '#647288',
         '2': '#4D5461',
-      }, 
-      fontFamily: {
-        sans: 'Inter, sans-serif'
-      }
+      },
+
+      bad: '#FF0000',
+      regular: '#FFB744',
+      good: '#2196F3',
+      great: '#0AFF67',
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar')
+  ],
+  variants: {
+      scrollbar: ['rounded']
+  },
   safelist: [{
           pattern: /(bg|text|border)-blue-(1|2|3|4)/,
           pattern: /(bg|text|border)-grey-(1|2)/,

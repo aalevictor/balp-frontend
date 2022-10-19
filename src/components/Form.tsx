@@ -18,7 +18,7 @@ export function FormRoot({ children }: FormRootProps) {
 FormRoot.displayName = 'Form.Root'
 
 export interface FormContentProps {
-    children: ReactNode
+    children: ReactNode;
 }
 
 export function FormContent({ children }: FormContentProps) {
