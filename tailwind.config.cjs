@@ -38,11 +38,8 @@ module.exports = {
     },
   },
   plugins: [
-    require('tailwind-scrollbar')
+    require('tailwind-scrollbar'),
   ],
-  variants: {
-      scrollbar: ['rounded']
-  },
   safelist: [{
           pattern: /(bg|text|border)-blue-(1|2|3|4)/,
           pattern: /(bg|text|border)-grey-(1|2)/,

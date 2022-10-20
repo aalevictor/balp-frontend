@@ -1,6 +1,7 @@
-import logo from '../assets/logo2.png'
+// import logo from "../assets/logo2.png";
 import React, { ReactNode } from "react";
 import { List } from 'phosphor-react';
+import logo from '../assets/logo2.png';
 
 export interface HeaderRootProps {
     children: ReactNode
