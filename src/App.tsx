@@ -4,7 +4,6 @@ import { SoccerBall, Suitcase, UserCircle } from 'phosphor-react'
 import { Player } from './components/Player'
 import { Header } from './components/Header'
 import { useEffect, useMemo, useState } from 'react'
-import axios from 'axios'
 import { TextInput } from './components/TextInput'
 import DataTable from 'react-data-table-component';
 
