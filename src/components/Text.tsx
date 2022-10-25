@@ -3,7 +3,6 @@ import { Slot } from '@radix-ui/react-slot';
 import { ReactNode } from 'react';
 
 export interface TextProps {
-    color?: string;
     children?: ReactNode;
     size?: 'text-xs' | 'text-sm' | 'text-md' | 'text-lg' | 'text-xl';
     asChild?: boolean;
