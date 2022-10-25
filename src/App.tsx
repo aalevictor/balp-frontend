@@ -3,10 +3,17 @@ import { Text } from './components/Text'
 import { SoccerBall, Suitcase, UserCircle } from 'phosphor-react'
 import { Player } from './components/Player'
 import { Header } from './components/Header'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import axios from 'axios'
 import { TextInput } from './components/TextInput'
 import DataTable from 'react-data-table-component';
+
+const paginationComponentOptions = { 
+	rowsPerPageText: 'Registros por página:', 
+	rangeSeparatorText: 'de', 
+	noRowsPerPage: false, 
+	selectAllRowsItem: false, 
+	selectAllRowsItemText: 'Todos' }
 
 const columns = [
     {
@@ -22,6 +29,7 @@ const columns = [
     {
         name: 'Clube',
         selector: row => row.club,
+        sortable: true,
     },
     {
         name: 'Posição',
@@ -34,7 +42,6 @@ const columns = [
     {
         name: 'Salário',
         selector: row => row.wage,
-        sortable: true,
     },
 ];
 
@@ -42,18 +49,35 @@ const customStyles = {
 	table: {
 		style: {
 			fontFamily: 'Inter',
+			backgroundColor: 'transparent',
+		}
+	},
+	subHeader: {
+		style: {
+			backgroundColor: 'transparent',
+			paddingRight: 0,
+			paddingLeft: 0,
+		}
+	},
+	headRow: {
+		style: {
+			borderRadius: '4px',
+			backgroundColor: 'transparent',
+			color: '#FFF4D3',
 		}
 	},
     rows: {
         style: {
-            minHeight: '72px',
+			marginTop: '8px',
+			borderRadius: '4px',
+			backgroundColor: 'rgba(100, 114, 136, 0.4)',
+			color: '#FFF4D3',
+			padding: '4px',
         },
     },
     headCells: {
         style: {
-            paddingLeft: '8px',
-            paddingRight: '8px',
-			fontSize: '16px',
+			fontSize: '14px',
         },
     },
     cells: {
@@ -62,25 +86,74 @@ const customStyles = {
             paddingRight: '8px',
         },
     },
-	rdt_Pagination: {
+	pagination: {
 		style: {
 			borderRadius: '4px',
+			backgroundColor: 'transparent',
+			color: '#FFF4D3',
+			marginTop: '8px',
+		},
+		pageButtonsStyle: {
+			color: '#FFF4D3',
+			fill: '#FFF4D3',
 		}
+	},
+	noData: {
+		style: {
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			marginTop: '8px',
+			borderRadius: '4px',
+			backgroundColor: 'rgba(100, 114, 136, 0.4)',
+			color: '#FFF4D3',
+			padding: '24px',
+		},
 	}
 };
 
 export function App() {
-	const [ players, setPlayers ] = useState<any>([])
-	const [ currentPage, setCurrentPage ] = useState(1)
+	const [players, setPlayers] = useState<any>([])
+	const [filterName, setFilterName] = useState('')
+	const [filterClub, setFilterClub] = useState('')
+	const [filterNationality, setFilterNationality] = useState('')
+	const [resetPaginationToggle, setResetPaginationToggle] = useState(false)
   
 	useEffect(() => {
 		// axios.get('http://192.168.15.8:8000/bal/players').then(response => {
 		// 	setPlayers(response.data)
 		// })
-		fetch('http://192.168.15.8:8000/bal/players')
+		fetch('https://balp-api.herokuapp.com/bal/players')
 			.then(response => response.json())
 			.then(data => setPlayers(data))
 	}, [])
+	
+	const filteredItems = players.filter(
+		item => item.name && item.name.toLowerCase().includes(filterName.toLowerCase()),
+	).filter(
+		item => item.club && item.club.toLowerCase().includes(filterClub.toLowerCase()),
+	).filter(
+		item => item.nationality && item.nationality.toLowerCase().includes(filterNationality.toLowerCase()),
+	)
+
+	const subHeaderComponentMemo = useMemo(() => {
+		return (
+			<div className='flex flex-col gap-1 w-full pb-4'>
+				<Text className='text-offwhite font-semibold'>Filtros</Text>
+				<div className='grid grid-cols-3 gap-2 max-lg:grid-cols-2 max-sm:grid-cols-1'>
+						<TextInput.Root>
+							<TextInput.Input onChange={e => setFilterName(e.target.value)} placeholder='Nome' />
+						</TextInput.Root>
+						<TextInput.Root>
+							<TextInput.Input onChange={e => setFilterClub(e.target.value)} placeholder='Clube' />
+						</TextInput.Root>
+						<TextInput.Root>
+							<TextInput.Input onChange={e => setFilterNationality(e.target.value)} placeholder='Nacionalidade' />
+						</TextInput.Root>
+				</div>
+			</div>
+		);
+	}, [[filterName, filterClub, filterNationality], resetPaginationToggle]);
 
   	return (
 		<div className='bg-blue-4 h-full min-h-screen'>
@@ -98,31 +171,18 @@ export function App() {
 				<Text size='text-sm' className='text-offwhite font-semibold'>aalevictor</Text>
 				</Header.Item>
 			</Header.Root>
-			<div className='h-fit relative p-2 py-8 mx-auto w-[90%] max-w-[1024px] flex flex-col gap-4 my-auto'>
-				<div className='flex flex-col gap-1 w-full'>
-					<Text className='text-offwhite font-semibold'>Filtros</Text>
-					<div className='grid grid-cols-4 gap-2 max-lg:grid-cols-2 max-sm:grid-cols-1'>
-						<TextInput.Root>
-							<TextInput.Input placeholder='Nome' />
-						</TextInput.Root>
-						<TextInput.Root>
-							<TextInput.Input placeholder='Clube' />
-						</TextInput.Root>
-						<TextInput.Root>
-							<TextInput.Input placeholder='Nacionalidade' />
-						</TextInput.Root>
-						<TextInput.Root>
-							<TextInput.Input placeholder='Segunda Nacionalidade' />
-						</TextInput.Root>
-					</div>
-				</div>
-			</div>
-			<div className='max-w-[1024px] mx-auto pb-10 px-2 rounded'>
+			<div className='max-w-[1024px] mx-auto py-8 px-2 max-lg:px-8'>
 				<DataTable
 					columns={columns}
-					data={players}
+					data={filteredItems}
+					subHeader
+					subHeaderComponent={subHeaderComponentMemo}
 					customStyles={customStyles}
 					pagination
+					paginationResetDefaultPage={resetPaginationToggle}
+					paginationComponentOptions={paginationComponentOptions}
+					responsive
+					noDataComponent='Sem nenhum registro encontrado.'
 				/>
 			</div>
 			{/* {players.map(player => {
