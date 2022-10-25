@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "start": "vite",
     "preview": "vite preview",
     "deploy-storybook": "storybook-to-ghpages",
     "storybook": "start-storybook -p 6006",
