@@ -8,6 +8,15 @@ import axios from 'axios'
 import { TextInput } from './components/TextInput'
 import DataTable from 'react-data-table-component';
 
+export interface Player {
+	name: string,
+	nationality: string,
+	club: string,
+	position: string,
+	age: number,
+	wage: string,
+}
+
 const paginationComponentOptions = { 
 	rowsPerPageText: 'Registros por página:', 
 	rangeSeparatorText: 'de', 
@@ -18,30 +27,30 @@ const paginationComponentOptions = {
 const columns = [
     {
         name: 'Nacionalidade',
-        selector: row => row.nationality,
+        selector: (row:Player) => row.nationality,
         sortable: true,
     },
     {
         name: 'Nome',
-        selector: row => row.name,
+        selector: (row:Player) => row.name,
         sortable: true,
     },
     {
         name: 'Clube',
-        selector: row => row.club,
+        selector: (row:Player) => row.club,
         sortable: true,
     },
     {
         name: 'Posição',
-        selector: row => row.position,
+        selector: (row:Player) => row.position,
     },
     {
         name: 'Idade',
-        selector: row => row.age,
+        selector: (row:Player) => row.age,
     },
     {
         name: 'Salário',
-        selector: row => row.wage,
+        selector: (row:Player) => row.wage,
     },
 ];
 
@@ -113,7 +122,7 @@ const customStyles = {
 };
 
 export function App() {
-	const [players, setPlayers] = useState<any>([])
+	const [players, setPlayers] = useState<Player[]>([])
 	const [filterName, setFilterName] = useState('')
 	const [filterClub, setFilterClub] = useState('')
 	const [filterNationality, setFilterNationality] = useState('')
@@ -128,13 +137,9 @@ export function App() {
 			.then(data => setPlayers(data))
 	}, [])
 	
-	const filteredItems = players.filter(
-		item => item.name && item.name.toLowerCase().includes(filterName.toLowerCase()),
-	).filter(
-		item => item.club && item.club.toLowerCase().includes(filterClub.toLowerCase()),
-	).filter(
-		item => item.nationality && item.nationality.toLowerCase().includes(filterNationality.toLowerCase()),
-	)
+	const filteredItems = players.filter(item => item.name && item.name.toLowerCase().includes(filterName.toLowerCase()))
+	.filter(item => item.club && item.club.toLowerCase().includes(filterClub.toLowerCase()))
+	.filter(item => item.nationality && item.nationality.toLowerCase().includes(filterNationality.toLowerCase()))
 
 	const subHeaderComponentMemo = useMemo(() => {
 		return (
